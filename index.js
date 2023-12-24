@@ -5,6 +5,9 @@ window.addEventListener("resize", () => {
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext('2d');
 
+var HP_PlayerOne = 50000;
+var HP_PlayerTwo = 50000;
+
 const tecladoOne = {
     direita:false,
     esquerda:false,
@@ -89,7 +92,17 @@ window.addEventListener("keyup", (event) => {
 });
 
 
-function verifyIfPlayersAreInTheSameSpace() {
+function verifyPlayersLocationAndDamage() {
+    if(JogadorOne.positionXSword <= JogadorTwo.positionX + 50 && JogadorOne.positionXSword >= JogadorTwo.positionX - 50 && JogadorOne.positionYSword <= JogadorTwo.positionY + 100 && JogadorOne.positionYSword >= JogadorTwo.positionY - 100 && JogadorOne.teclado.attack){
+        HP_PlayerTwo -= 50;
+        console.log("Player Two HP :" + HP_PlayerTwo);
+        
+    }
+    if(JogadorTwo.positionXSword <= JogadorOne.positionX + 50 && JogadorTwo.positionXSword >= JogadorOne.positionX - 50 && JogadorTwo.positionYSword <= JogadorOne.positionY + 100 && JogadorTwo.positionYSword >= JogadorOne.positionY - 100 && JogadorTwo.teclado.attack){
+        HP_PlayerOne -= 50;
+        console.log("Player One HP :" + HP_PlayerOne);
+    }
+
     if(JogadorOne.positionX <= JogadorTwo.positionX + 50 && JogadorOne.positionX >= JogadorTwo.positionX - 50 && JogadorOne.positionY <= JogadorTwo.positionY + 100 && JogadorOne.positionY >= JogadorTwo.positionY - 100){
         if(JogadorOne.positionX > JogadorTwo.positionX){
             JogadorOne.positionX+=JogadorOne.velo
@@ -119,7 +132,7 @@ function verifyIfPlayersAreInTheSameSpace() {
 const game = () => {
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    verifyIfPlayersAreInTheSameSpace();
+    verifyPlayersLocationAndDamage();
 
     JogadorOne.desenhar();
     JogadorTwo.desenhar();

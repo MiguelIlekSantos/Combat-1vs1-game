@@ -23,7 +23,7 @@ class Jogador {
         this.positionY = window.innerHeight / 3;
         this.originRecortX = 0;
         this.originRecortY = 0;
-        this.velo = 5;
+        this.velo = 10;
         this.imageWidth = 150;
         this.imageHeight = 150;
         this.canvasWidth = window.innerWidth;
