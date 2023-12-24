@@ -4,9 +4,20 @@ window.addEventListener("resize", () => {
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext('2d');
+const HPNumberOne = document.getElementById("numberValueOne");
+const HPNumberBarOne = document.getElementById("progressBarOne");
+const HPNumberTwo = document.getElementById("numberValueTwo");
+const HPNumberBarTwo = document.getElementById("progressBarTwo");
+const windowRestart = document.getElementById("window-restart");
+const playAgainBtn = document.getElementById("play-again");
 
-var HP_PlayerOne = 50000;
-var HP_PlayerTwo = 50000;
+playAgainBtn.addEventListener("click", () => {
+    location.reload();
+})
+
+
+var HP_PlayerOne = 10000;
+var HP_PlayerTwo = 10000;
 
 const tecladoOne = {
     direita:false,
@@ -26,10 +37,10 @@ const tecladoTwo = {
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const JogadorOne = new Jogador(ctx,tecladoOne,window);
-const JogadorTwo = new Jogador(ctx,tecladoTwo,window);
+const JogadorOne = new Jogador(ctx,tecladoTwo,window);
+const JogadorTwo = new Jogador(ctx,tecladoOne,window);
 
-JogadorTwo.positionX = 0;
+JogadorTwo.positionX = window.innerWidth - 150;
 
 
 window.addEventListener("keydown", (event) => {
@@ -95,12 +106,9 @@ window.addEventListener("keyup", (event) => {
 function verifyPlayersLocationAndDamage() {
     if(JogadorOne.positionXSword <= JogadorTwo.positionX + 50 && JogadorOne.positionXSword >= JogadorTwo.positionX - 50 && JogadorOne.positionYSword <= JogadorTwo.positionY + 100 && JogadorOne.positionYSword >= JogadorTwo.positionY - 100 && JogadorOne.teclado.attack){
         HP_PlayerTwo -= 50;
-        console.log("Player Two HP :" + HP_PlayerTwo);
-        
     }
     if(JogadorTwo.positionXSword <= JogadorOne.positionX + 50 && JogadorTwo.positionXSword >= JogadorOne.positionX - 50 && JogadorTwo.positionYSword <= JogadorOne.positionY + 100 && JogadorTwo.positionYSword >= JogadorOne.positionY - 100 && JogadorTwo.teclado.attack){
         HP_PlayerOne -= 50;
-        console.log("Player One HP :" + HP_PlayerOne);
     }
 
     if(JogadorOne.positionX <= JogadorTwo.positionX + 50 && JogadorOne.positionX >= JogadorTwo.positionX - 50 && JogadorOne.positionY <= JogadorTwo.positionY + 100 && JogadorOne.positionY >= JogadorTwo.positionY - 100){
@@ -130,6 +138,16 @@ function verifyPlayersLocationAndDamage() {
 
 
 const game = () => {
+    HPNumberOne.innerHTML = HP_PlayerOne;
+    HPNumberTwo.innerHTML = HP_PlayerTwo;
+    HPNumberBarOne.value = HP_PlayerOne;
+    HPNumberBarTwo.value = HP_PlayerTwo;
+    if(HP_PlayerOne == 0 || HP_PlayerTwo == 0){
+        windowRestart.style.display = "flex";
+        window.removeEventListener("keydown");
+        window.removeEventListener("keyup");
+    }
+
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
     verifyPlayersLocationAndDamage();

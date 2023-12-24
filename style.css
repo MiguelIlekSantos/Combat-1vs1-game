@@ -19,8 +19,71 @@ body {
     padding-top: 50px;
     margin: 0px;
     padding: 0px;
+    position: relative;
 }
 
 canvas {
     border: 1px solid black;
 }
+
+.HP_bar{
+    position: absolute;
+    z-index: 999;
+    top: 40px;
+    left: 40px;
+    width: 300px;
+    height: 100px;
+    background-color: #999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: 2px solid white;
+}
+.HP_bar p{
+    align-self: start;
+    margin: 0px 0px 10px 20px;
+    font-size: 20px;
+    font-family: Verdana;
+    font-weight: bold;
+}
+.HP_bar p span{
+    color: blue;
+}
+.HP_bar progress{
+    width: 80%;
+}
+
+.PlayerTwo{
+    left: unset;
+    right: 40px;
+}
+
+.window-restart{
+    text-align: center;
+    padding: 30px;
+    border-radius: 20px;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    background-color: #999;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+.window-restart button{
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid black;
+    transition: all 0.1s;
+}
+.window-restart button:active{
+    background-color: lightblue;
+    transform: scale(1.2);
+}
+
+
+
+

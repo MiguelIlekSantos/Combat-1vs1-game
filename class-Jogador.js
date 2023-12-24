@@ -19,7 +19,7 @@ class Jogador {
             this.recortHeight = this.jogadorNoSword.height / 4;
             this.desenhar();
         })
-        this.positionX = window.innerWidth - 150;
+        this.positionX = 0;
         this.positionY = window.innerHeight / 3;
         this.originRecortX = 0;
         this.originRecortY = 0;

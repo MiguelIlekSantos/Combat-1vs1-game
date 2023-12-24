@@ -9,12 +9,25 @@
 </head>
 
 <body>
+    <div class="HP_bar">
+        <p>Player One HP<br><span id="numberValueOne">50000</span></p>
+        <progress id="progressBarOne" max="10000" min="1" value="10000"></progress>
+    </div>
+
+    <div class="HP_bar PlayerTwo">
+        <p>Player Two HP<br><span id="numberValueTwo">50000</span></p>
+        <progress id="progressBarTwo" max="10000" min="1" value="10000"></progress>
+    </div>
 
     <canvas id="canvas">
         <h1>O browser não suporta canvas</h1>
     </canvas>
 
-
+    
+    <div class="window-restart" id="window-restart">
+        <p>The battle is over<br>Do you want to restart ?</p>
+        <button id="play-again">Play Again</button>
+    </div>
 
 
 
