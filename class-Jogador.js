@@ -4,6 +4,7 @@ class Jogador {
         this.ctx = ctx;
         this.teclado = teclado;
         this.DisplayImage;
+
         this.jogador = new Image();
         this.jogador.src = 'img/Sprites.png';
         this.jogador.addEventListener("load", () => {
@@ -12,6 +13,7 @@ class Jogador {
             this.desenhar();
         })
 
+        
         this.jogadorNoSword = new Image();
         this.jogadorNoSword.src = 'img/Sprites-no-sword.png';
         this.jogadorNoSword.addEventListener("load", () => {
@@ -19,6 +21,8 @@ class Jogador {
             this.recortHeight = this.jogadorNoSword.height / 4;
             this.desenhar();
         })
+
+
         this.positionX = 0;
         this.positionY = window.innerHeight / 3;
         this.originRecortX = 0;
