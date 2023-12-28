@@ -28,10 +28,10 @@ class Jogador {
         this.originRecortX = 0;
         this.originRecortY = 0;
         this.velo = 10;
-        this.imageWidth = 150;
-        this.imageHeight = 150;
-        this.canvasWidth = window.innerWidth;
-        this.canvasHeight = window.innerHeight;
+        this.imageWidth = 100;
+        this.imageHeight = 100;
+        this.canvasWidth = window.innerWidth * 0.6;
+        this.canvasHeight = window.innerHeight * 0.65;
 
         this.sword = new Image();
         this.sword.src = 'img/Sword.png';
@@ -127,15 +127,15 @@ class Jogador {
             this.swordDirection = 4;
         }
 
-        if (this.positionX < 0) {
+        if (this.positionX < -40) {
             this.positionX += this.velo;
-        } else if (this.positionX > this.canvasWidth - this.imageWidth) {
-            this.positionX -= this.velo;
+        } else if (this.positionX > this.canvasWidth - this.imageWidth + 40) {
+            this.positionX = this.canvasWidth - this.imageWidth + 40;
         }
-        if (this.positionY < 0) {
+        if (this.positionY < -20) {
             this.positionY += this.velo;
-        } else if (this.positionY > this.canvasHeight - this.imageHeight) {
-            this.positionY -= this.velo;
+        } else if (this.positionY > this.canvasHeight * 0.5) {
+            this.positionY = this.canvasHeight * 0.5;
         }
 
     }

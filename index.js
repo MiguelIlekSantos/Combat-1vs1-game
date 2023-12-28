@@ -34,13 +34,13 @@ const tecladoTwo = {
     attack:false
 }
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = window.innerWidth * 0.6;
+canvas.height = window.innerHeight * 0.6;
 
 const JogadorOne = new Jogador(ctx,tecladoTwo,window);
 const JogadorTwo = new Jogador(ctx,tecladoOne,window);
 
-JogadorTwo.positionX = window.innerWidth - 150;
+JogadorTwo.positionX = canvas.width - 150;
 
 
 window.addEventListener("keydown", (event) => {
@@ -49,9 +49,10 @@ window.addEventListener("keydown", (event) => {
     } else if (event.keyCode == 39) { //direita
         tecladoOne.direita = true;
     }
-    if (event.keyCode == 38) { //cima
-        tecladoOne.cima = true;
-    } else if (event.keyCode == 40) { // baixo
+    // if (event.keyCode == 38) { //cima
+    //     tecladoOne.cima = true;
+    // } else 
+    if (event.keyCode == 40) { // baixo
         tecladoOne.baixo = true;
     }
     if (event.keyCode == 65) { //esquerda
@@ -59,9 +60,10 @@ window.addEventListener("keydown", (event) => {
     } else if (event.keyCode == 68) { //direita
         tecladoTwo.direita = true;
     }
-    if (event.keyCode == 87) { //cima
-        tecladoTwo.cima = true;
-    } else if (event.keyCode == 83) { // baixo
+    // if (event.keyCode == 87) { //cima
+    //     tecladoTwo.cima = true;
+    // } else
+     if (event.keyCode == 83) { // baixo
         tecladoTwo.baixo = true;
     }
     if(event.keyCode == 70){     // tecla F
@@ -103,36 +105,12 @@ window.addEventListener("keyup", (event) => {
 });
 
 
-function verifyPlayersLocationAndDamage() {
+function verifyDamage() {
     if(JogadorOne.positionXSword <= JogadorTwo.positionX + 50 && JogadorOne.positionXSword >= JogadorTwo.positionX - 50 && JogadorOne.positionYSword <= JogadorTwo.positionY + 100 && JogadorOne.positionYSword >= JogadorTwo.positionY - 100 && JogadorOne.teclado.attack){
         HP_PlayerTwo -= 50;
     }
     if(JogadorTwo.positionXSword <= JogadorOne.positionX + 50 && JogadorTwo.positionXSword >= JogadorOne.positionX - 50 && JogadorTwo.positionYSword <= JogadorOne.positionY + 100 && JogadorTwo.positionYSword >= JogadorOne.positionY - 100 && JogadorTwo.teclado.attack){
         HP_PlayerOne -= 50;
-    }
-
-    if(JogadorOne.positionX <= JogadorTwo.positionX + 50 && JogadorOne.positionX >= JogadorTwo.positionX - 50 && JogadorOne.positionY <= JogadorTwo.positionY + 100 && JogadorOne.positionY >= JogadorTwo.positionY - 100){
-        if(JogadorOne.positionX > JogadorTwo.positionX){
-            JogadorOne.positionX+=JogadorOne.velo
-            JogadorOne.positionY+=JogadorOne.velo
-            JogadorTwo.positionX-=JogadorOne.velo
-            JogadorTwo.positionY-=JogadorOne.velo
-        }else if(JogadorOne.positionX < JogadorTwo.positionX){
-            JogadorOne.positionX-=JogadorOne.velo
-            JogadorOne.positionY-=JogadorOne.velo
-            JogadorTwo.positionX+=JogadorOne.velo
-            JogadorTwo.positionY+=JogadorOne.velo
-        }if(JogadorOne.positionY > JogadorTwo.positionY){
-            JogadorOne.positionX+=JogadorOne.velo
-            JogadorOne.positionY+=JogadorOne.velo
-            JogadorTwo.positionX-=JogadorOne.velo
-            JogadorTwo.positionY-=JogadorOne.velo
-        }else if(JogadorOne.positionY < JogadorTwo.positionY){
-            JogadorOne.positionX-=JogadorOne.velo
-            JogadorOne.positionY-=JogadorOne.velo
-            JogadorTwo.positionX+=JogadorOne.velo
-            JogadorTwo.positionY+=JogadorOne.velo
-        }
     }
 }
 
@@ -150,7 +128,7 @@ const game = () => {
 
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    verifyPlayersLocationAndDamage();
+    verifyDamage();
 
     JogadorOne.desenhar();
     JogadorTwo.desenhar();
