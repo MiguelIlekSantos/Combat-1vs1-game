@@ -26,14 +26,14 @@ canvas {
     background-image: linear-gradient(to bottom, #5887f4 70%, #65d331 70% 75%, #d3713b 75% 100%);
     border: 1px solid black;
     border-radius: 20px;
-    /* box-shadow: 0px 0px 20px black; */
+    box-shadow: 0px 0px 20px white;
 }
 
 .HP_bar{
     position: absolute;
     z-index: 999;
-    top: 40px;
-    left: 40px;
+    top: 20px;
+    left: 10px;
     width: 15%;
     height: 100px;
     background-color: #999;
@@ -60,7 +60,7 @@ canvas {
 
 .PlayerTwo{
     left: unset;
-    right: 40px;
+    right: 10px;
 }
 
 .window-restart{

@@ -34,11 +34,13 @@ const tecladoTwo = {
     attack:false
 }
 
-canvas.width = window.innerWidth * 0.6;
-canvas.height = window.innerHeight * 0.6;
+// canvas.width = window.innerWidth * 0.6;
+// canvas.height = window.innerHeight * 0.6;
+canvas.width = 850;
+canvas.height = 600;
 
-const JogadorOne = new Jogador(ctx,tecladoTwo,window);
-const JogadorTwo = new Jogador(ctx,tecladoOne,window);
+const JogadorOne = new Jogador(ctx,tecladoTwo,window, canvas);
+const JogadorTwo = new Jogador(ctx,tecladoOne,window, canvas);
 
 JogadorTwo.positionX = canvas.width - 150;
 

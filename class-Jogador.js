@@ -1,6 +1,6 @@
 class Jogador {
 
-    constructor(ctx, teclado, window) {
+    constructor(ctx, teclado, window, canvas) {
         this.ctx = ctx;
         this.teclado = teclado;
         this.DisplayImage;
@@ -22,17 +22,16 @@ class Jogador {
             this.desenhar();
         })
 
-
-        this.positionX = 0;
-        this.positionY = window.innerHeight / 3;
         this.originRecortX = 0;
         this.originRecortY = 0;
         this.velo = 10;
         this.imageWidth = 100;
         this.imageHeight = 100;
-        this.canvasWidth = window.innerWidth * 0.6;
-        this.canvasHeight = window.innerHeight * 0.65;
-
+        this.canvasWidth = canvas.width;
+        this.canvasHeight = canvas.height;
+        this.positionX = 0;
+        this.positionY = this.canvasHeight * 0.55;
+        
         this.sword = new Image();
         this.sword.src = 'img/Sword.png';
         this.sword.addEventListener("load", () => {
@@ -127,15 +126,15 @@ class Jogador {
             this.swordDirection = 4;
         }
 
-        if (this.positionX < -40) {
+        if (this.positionX < -30) {
             this.positionX += this.velo;
-        } else if (this.positionX > this.canvasWidth - this.imageWidth + 40) {
-            this.positionX = this.canvasWidth - this.imageWidth + 40;
+        } else if (this.positionX > this.canvasWidth - this.imageWidth + 30) {
+            this.positionX = this.canvasWidth - this.imageWidth + 30;
         }
         if (this.positionY < -20) {
             this.positionY += this.velo;
-        } else if (this.positionY > this.canvasHeight * 0.5) {
-            this.positionY = this.canvasHeight * 0.5;
+        } else if (this.positionY > this.canvasHeight * 0.55) {
+            this.positionY = this.canvasHeight * 0.55;
         }
 
     }
